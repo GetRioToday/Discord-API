@@ -4,7 +4,7 @@ A roblox luau script that let's you send commands to the local Discord RPC serve
 # What is this?
 This script let's you send commands to the locally hosted [Discord RPC server](https://discord.com/developers/docs/topics/rpc).
 
-It was primarily tested with the INVITE_BROWSER command to open an invite in the Discord app, which works by impersonateing the discord.com origin, since Discord performs [origin checking on RPC requests.](https://discord.com/developers/docs/topics/rpc#connecting)
+It was primarily tested with the INVITE_BROWSER command to open an invite in the Discord app, which works by impersonating the discord.com origin, since Discord performs [origin checking on RPC requests.](https://discord.com/developers/docs/topics/rpc#connecting)
 
 To use this, your environment must support the [Unified Naming Convention](https://github.com/unified-naming-convention/NamingStandard/), specifically the **request** function and **WebSocket** library.
 
