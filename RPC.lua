@@ -23,7 +23,7 @@ local function GetOpenPort(): number?
 
 		if SocketConnection and type(SocketConnection) == "userdata" then
 			local _, _ = pcall(function()
-				return SocketConnection:Close()	-- indexing .Close(Self) is somehow broken on "Wave Executor", so namecall
+				return SocketConnection:Close()	-- indexing .Close(Self) is somehow broken on the "Wave" software, so namecall in anonymous function
 			end)
 
 			return Port
@@ -54,8 +54,9 @@ local function SendCommand(Url: string, Command: {[string]: string}): boolean
 
 	local _, Decoded = pcall(HttpService.JSONDecode, HttpService, Response.Body)
 
-    local HasBody = Response.Body and #Response.Body > 1
-    local HasJson = HasBody and Response.Body:sub(1, 1) == "{"
+	local Success = Response.Success or Response.StatusCode == 200 -- Software like Xeno do not have ".Success" available
+	local HasBody = Success and Response.Body and #Response.Body > 1
+	local HasJson = HasBody and Response.Body:sub(1, 1) == "{"
 	local HasData = HasJson and Decoded ~= nil and Decoded['data'] ~= nil
 	local NoError = HasData and Decoded['evt'] ~= "ERROR"
 
