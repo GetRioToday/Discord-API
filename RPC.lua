@@ -31,7 +31,7 @@ local function GetOpenPort(): number?
 	end
 end
 
-local function GetConnectionUrl(): string
+local function GetConnectionUrl(): string?
 	local Port = GetOpenPort()
 	if Port then
 		return "http://127.0.0.1:" .. tostring(Port) .. "/rpc?v=1"
